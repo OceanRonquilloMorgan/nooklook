@@ -1,0 +1,18 @@
+#main {
+	background-color: #c6a780ff;
+}
+
+.button {
+	background-color: #c6a780ff;
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+.jumbotron {
+    background-size: cover; 
+    height: 100%;
+    width: 100%;
+    border-radius: 0 !important;
+}
