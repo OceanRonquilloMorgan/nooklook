@@ -25,30 +25,42 @@
       </ul>
     </nav>
     
-    <!-- Home Search -->
+    <!--  Landing -->
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-12 p-0">
-          <div id="main" class="jumbotron min-vh-100 text-center m-0 d-flex flex-column justify-content-center">
-            <h1 class="mb-5">Find Your Next Favorite Study Spot!</h1>
-            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-              <form>
+      <div class="row no-gutter">
+        <div class="col-md-8 col-lg-6">
+          <div class="d-flex align-items-center py-5">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-9 col-lg-8 mx-auto">
+                  <h2 class="mb-5">Find your next favorite study spot <br />
+                    <span class="h3"><small class="text-muted">Ease the process of searching for a place to study or relax</small>
+               	  </span>
+               	  </h2>
+                  <form>
                 <div class="form-row">
                   <div class="col-12 col-md-9 mb-2 mb-md-0">
-                    <input type="email" class="form-control form-control-lg" placeholder="Enter your city...">
+                    <input type="text" class="form-control form-control-lg" placeholder="Enter your location">
                   </div>
                   <div class="col-12 col-md-3">
-                    <button type="submit" class="btn btn-block btn-lg btn-dark text-light">Search!</button>
+                  	<button type="submit" class="btn btn-lg btn-dark text-uppercase font-weight-bold mb-2">Search</button>
                   </div>
                 </div>
               </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        
+        <div class="d-none d-md-flex col-md-4 col-lg-6">
+          <img src="img/home.png" class="img-fluid float-right" alt="Home Page">
+        </div>
       </div>
     </div>
+
     <!-- Footer -->
-    <!--       <footer class="py-5 bg-dark">
+    <!-- <footer class="py-5 bg-dark">
       <div class="container">
          <p class="m-0 text-center text-white">Copyright &copy; Dream Team 2019</p>
       </div>

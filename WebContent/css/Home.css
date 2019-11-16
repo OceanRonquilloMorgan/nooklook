@@ -2,8 +2,10 @@
 	background-color: #c6a780ff;
 }
 
-.button {
-	background-color: #c6a780ff;
+.bg-image {
+  background-image: url('../img/home.png');
+  background-size: cover;
+  background-position: center;
 }
 
 .navbar {

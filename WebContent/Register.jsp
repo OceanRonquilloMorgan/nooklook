@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Register - NookLook</title>
-    <link rel="stylesheet" href="./css/Home.css">
+    <link rel="stylesheet" href="./css/Register.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
   </head>
   <body>
@@ -27,29 +27,40 @@
     
     <!-- Login Form -->
     <div class="container-fluid">
-      <div class="row">
-        <div id="main" class="jumbotron min-vh-100 m-0 d-flex flex-column">
-          <div class="container">
-            <h1 class="mb-5">Register A New Account</h1>
-            <form>
-              <div class="form-group">
-                <label for="exampleUsername">Username</label>
-                <input type="text" class="form-control" id="exampleUsername" aria-describedby="usernameHelp" placeholder="Enter username">
+      <div class="row no-gutter">
+        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+        <div class="col-md-8 col-lg-6">
+          <div class="login d-flex align-items-center py-5">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-9 col-lg-8 mx-auto">
+                  <h3 class="mb-5">Register a new account</h3>
+                  <form>
+                    <div class="form-label-group">
+                      <input type="text" id="firstName" class="form-control" placeholder="First Name" required autofocus>
+                      <label for="username">First Name</label>
+                    </div>
+                    <div class="form-label-group">
+                      <input type="text" id="lastName" class="form-control" placeholder="Last Name" required autofocus>
+                      <label for="username">Last Name</label>
+                    </div>
+                    <div class="form-label-group">
+                      <input type="text" id="username" class="form-control" placeholder="Username" required autofocus>
+                      <label for="username">Username</label>
+                    </div>
+                    <div class="form-label-group">
+                      <input type="email" id="email" class="form-control" placeholder="Email" required autofocus>
+                      <label for="email">Email</label>
+                    </div>
+                    <div class="form-label-group">
+                      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                      <label for="inputPassword">Password</label>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Register</button>
+                  </form>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="exampleUsername">First Name</label>
-                <input type="text" class="form-control" id="exampleFirstName" aria-describedby="firstNameHelp" placeholder="Enter first name">
-              </div>
-              <div class="form-group">
-                <label for="exampleUsername">Last Name</label>
-                <input type="text" class="form-control" id="exampleLastName" aria-describedby="lastNHelp" placeholder="Enter last name">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter password">
-              </div>
-              <button type="submit" class="btn btn-dark text-light">Submit</button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
