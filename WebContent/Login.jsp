@@ -54,6 +54,13 @@
         </div>
       </div>
     </div>
+    
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <h4 class="m-0 font-weight-bold text-white text-center">Copyright &copy; Dream Team 2019</h4>
+      </div>
+    </footer>
     <body>
   </body>
 </html>
