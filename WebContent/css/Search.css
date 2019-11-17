@@ -1,0 +1,20 @@
+#main {
+	background-color: #c6a780ff;
+}
+
+.bg-image {
+  background-image: url('../img/home.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+.jumbotron {
+    background-size: cover; 
+    height: 100%;
+    width: 100%;
+    border-radius: 0 !important;
+}

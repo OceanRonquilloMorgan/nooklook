@@ -9,7 +9,7 @@
 }
 
 .navbar {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .jumbotron {
@@ -17,4 +17,5 @@
     height: 100%;
     width: 100%;
     border-radius: 0 !important;
+    margin-bottom: 0;
 }
