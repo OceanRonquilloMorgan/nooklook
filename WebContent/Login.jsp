@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  
     <meta charset="UTF-8">
     <title>Login - NookLook</title>
     <link rel="stylesheet" href="./css/Login.css">

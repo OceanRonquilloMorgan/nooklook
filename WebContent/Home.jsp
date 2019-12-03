@@ -4,6 +4,9 @@
 <html>
   <head>
     <meta charset="UTF-8">
+   
+    <%String json = (String)request.getAttribute("json"); %>
+   
     <title>Home - NookLook</title>
     <link rel="stylesheet" href="./css/Home.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -27,6 +30,8 @@
     </nav>
     
     <!--  Landing -->
+    <!-- added a form tag to help init servlet -->
+   <form method="GET" action="SearchTerm"> 
     <div class="container-fluid">
       <div class="row no-gutter">
         <div class="col-md-8 col-lg-6">
@@ -40,10 +45,13 @@
                   <form>
                     <div class="form-row">
                       <div class="col-12 col-md-9 mb-2 mb-md-0">
-                        <input type="text" class="form-control form-control-lg" placeholder="Enter your location">
+                        <input type="text" class="form-control form-control-lg" placeholder="Enter your location" name="searchText">
                       </div>
                       <div class="col-12 col-md-3">
-                        <button type="submit" class="btn btn-lg btn-dark text-uppercase font-weight-bold mb-2">Search</button>
+                      <!--grab the search results here and send to serlvet-->
+                       <button type="submit" class="btn btn-lg btn-dark text-uppercase font-weight-bold mb-2">Search</button>
+                        
+                     		
                       </div>
                     </div>
                   </form>
@@ -57,7 +65,7 @@
         </div>
       </div>
     </div>
-    
+  </form> 
     <!--  Mission -->
     <div style="margin-bottom: 0;" class="jumbotron text-center">
       <h4>Our mission is to help students find study spots near them tailored to their individual preferences.</h4>
