@@ -3,11 +3,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-  
     <meta charset="UTF-8">
     <title>Login - NookLook</title>
     <link rel="stylesheet" href="./css/Login.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <style>
+      .mes {
+      margin-left: 40%;
+      color: red;
+      font-size: 20pt;
+      font-weight: bold;
+      }	
+    </style>
   </head>
   <body>
   
@@ -37,17 +44,23 @@
               <div class="row">
                 <div class="col-md-9 col-lg-8 mx-auto">
                   <h3 class="mb-5">Welcome back!</h3>
-                  <form>
+                  <form action="JDBC_LOGIN" method="GET">
                     <div class="form-label-group">
-                      <input type="text" id="username" class="form-control" placeholder="Username" required autofocus>
+                      <input type="text" name="username" id="username" class="form-control" placeholder="Username" required autofocus>
                       <label for="username">Username</label>
                     </div>
                     <div class="form-label-group">
-                      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                      <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
                       <label for="inputPassword">Password</label>
                     </div>
                     <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Login</button>
                   </form>
+                  <div class="mes">
+                    <%String mes = (String)request.getAttribute("message"); %>
+                    <%if (mes != null) { %>
+                    <%=mes%>
+                    <% } %>
+                  </div>
                 </div>
               </div>
             </div>
