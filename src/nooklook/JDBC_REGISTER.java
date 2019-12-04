@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 public class JDBC_REGISTER extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public static final String CREDENTIALS_STRING = "";      
+	public static final String CREDENTIALS_STRING = "jdbc:mysql://google/lab7?cloudSqlInstance=lab-7-201:us-central1:lab8instance&socketFactory=com.google.cloud.sql.mysql.SocketFactory&useSSL=false&user=ptkaster&password=gitlitcommit";      
 	static Connection connection = null;
        
     /**
