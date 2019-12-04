@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class SQL_UTILITY_NOOKLOOK {
 	
 	
-	public static final String CREDENTIALS_STRING = "";      
+	public static final String CREDENTIALS_STRING = "jdbc:mysql://google/lab7?cloudSqlInstance=lab-7-201:us-central1:lab8instance&socketFactory=com.google.cloud.sql.mysql.SocketFactory&useSSL=false&user=ptkaster&password=gitlitcommit";      
 	static Connection connection;
 	
 	public static void initConnection () {

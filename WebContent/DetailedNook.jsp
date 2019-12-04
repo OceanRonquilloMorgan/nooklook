@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Account - NookLook</title>
+    <title>DetailedNook - NookLook</title>
     <link rel="stylesheet" href="./css/Home.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

@@ -1,0 +1,14 @@
+.mtb-5 {
+	margin-top: 20;
+	margin-bottom: 20;
+}
+
+a:hover {
+	color: light-purple;
+
+}
+
+#results {
+	padding: 2%;
+	margin-bottom: 5%;
+}
