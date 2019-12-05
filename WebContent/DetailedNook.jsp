@@ -10,29 +10,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script>
-      $('#nookCarousel').carousel({
-        interval: 10000
-      })
-      
-      $('.carousel .carousel-item').each(function(){
-          var minPerSlide = 3;
-          var next = $(this).next();
-          if (!next.length) {
-          next = $(this).siblings(':first');
-          }
-          next.children(':first-child').clone().appendTo($(this));
-          
-          for (var i=0;i<minPerSlide;i++) {
-              next=next.next();
-              if (!next.length) {
-              	next = $(this).siblings(':first');
-            	}
-              
-              next.children(':first-child').clone().appendTo($(this));
-            }
-      });    
-    </script>
     
     <script>
     //getting the business ID
@@ -124,18 +101,26 @@
         		                        var id = data.id;
 										
         		                    	var reviewText = data.reviews[0].text;
+        		                    	var profileUrl = data.reviews[0].user.profile_url;
+        		                    	var imageUrl = data.reviews[0].image_url;
+        		                    	var namePerson = data.reviews[0].user.name;
+        		                    	console.log(name);
+        		                    	var bussUrl = data.reviews[0].url;
+        		                    	var ratingPerson = data.reviews[0].rating;
+
         		                    	
-        		                    	console.log(review);
+        		                    	//console.log(review);
         		                    	console.log(reviewText);
         		                       	
         		                        $('#reviewText').append(reviewText); 
+        		                        $('#namePerson').append(namePerson); 
+        		                        $('#ratingPerson').append(ratingPerson); 
+        		                        $('#profileUrl').append('<a href="'+ profileUrl +'">Read More Here!</a>' ); 
         		            
         		            }     
       		 });      
       		
       	}
-   	 	
-
       </script>
     
     
@@ -198,7 +183,60 @@
   %>
     
     <!--  Detailed Nook -->
-    <div class="container-fluid">
+    
+        <div class="container-fluid">
+        
+  <div class="row">
+	  <div class="col">
+	  <br>
+	  	<h2 id="name" class="mb-5" style="padding-left:30px;" ></h2>
+	  	<div id="img" class="d-none d-md-flex col-md-4 col-lg-6"  style = "padding-left: 30px;"></div>
+	  	<br>
+	  	<br>
+	  </div>
+	  <div class="col">
+		  <br>
+		  <br>
+		  <h5 id="rating" class="mb-5">Rating: </h5>
+          <h5 id="addy"  class="mb-5">Address: </h5>
+          <h5 id="phone" class="mb-5">Phone Number: </h5>
+          <h5 id="web" class="mb-5">Website: </h5> 
+	  </div>
+	  <div class="col">
+		  <br>
+		  <br>
+		  <h5 id="namePerson" class="mb-5">This nook was recently visited by </h5>
+		  <h5 id="reviewText" class="mb-5">They said that </h5>
+          <h5 id="rating"  class="mb-5">They gave it a </h5>
+          <h5 id="profileUrl" class="mb-5">You can read more about their experience here: </h5>
+	  </div>
+ 
+</div>
+     <!--  <div class="row no-gutter">
+                <table>
+                <tr>
+                <td>
+                  Business Name
+                  <h2 id="name" class="mb-5"></h2>
+                   Business Main Image
+                  <div id="img" class="d-none d-md-flex col-md-4 col-lg-6"></div>
+                </td>
+                <tr>
+                <td>
+                 <div class="d-none d-md-flex col-md-4 col-lg-6">
+          <h5 id="rating" class="mb-5">Rating: </h5>
+          <h5 id="addy"  class="mb-5">Address: </h5>
+          <h5 id="phone" class="mb-5">Phone Number: </h5>
+          <h5 id="web" class="mb-5">Website: </h5> 
+        </div>
+        </td>
+</tr>
+                </table>
+        
+      </div> -->
+    </div>
+    
+<!--     <div class="container-fluid">
       <div class="row no-gutter">
         <div class="col-md-8 col-lg-6">
           <div class="d-flex align-items-center py-5">
@@ -206,9 +244,16 @@
               <div class="row">
                 <div class="col-md-9 col-lg-8 mx-auto">
                 
-                  <!--  Business Name -->
+                <table>
+                <td>
+                
+                </td>
+                
+                </table>
+                
+                   Business Name
                   <h2 id="name" class="mb-5"></h2>
-                  <!--  Business Main Image -->
+                   Business Main Image
                   <div id="img" class="d-none d-md-flex col-md-4 col-lg-6">
                  </div>
                 </div>
@@ -223,80 +268,8 @@
           <h5 id="web" class="mb-5">Website: </h5> 
         </div>
       </div>
-    </div>
-    <div class="container-fluid">
-      <div class="row no-gutter">
-        <div class="col-md-8 col-lg-6">
-          <div class="d-flex align-items-center py-5">
-            <div class="container">
-              <!-- Welcome Message -->
-              <div class="row">
-                <div class="col-md-9 col-lg-8 mx-auto">
-                  <div class="container my-3">
-                    <div class="row no-gutter">
-                      <div id="nookCarousel" class="carousel slide w-100" data-ride="carousel">
-                        <div class="carousel-inner w-100" role="listbox">
-                          <div class="carousel-item active">
-                            <div class="col-md-4">
-                              <div class="card card-body">
-                                 <div id=img0 ></div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="carousel-item">
-                            <div class="col-md-4">
-                              <div class="card card-body">
-                                 <div id=img1 ></div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="carousel-item">
-                            <div class="col-md-4">
-                              <div class="card card-body">
-                                 <div id=img2 ></div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="carousel-item">
-                            <div class="col-md-4">
-                              <div class="card card-body">
-                                 <div id=img0 ></div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="carousel-item">
-                            <div class="col-md-4">
-                              <div class="card card-body">
-                                 <div id=img1 ></div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="carousel-item">
-                            <div class="col-md-4">
-                              <div class="card card-body">
-                                 <div id=img2 ></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <a class="carousel-control-prev w-auto" href="#nookCarousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next w-auto" href="#nookCarousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </div> -->
+    
     
    
     <!-- Footer -->

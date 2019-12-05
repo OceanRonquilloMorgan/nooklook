@@ -11,8 +11,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
-       
-          
+/*        var variable = getBusinessID(session.getAttribute("sessname")); */
+/*        var variable = getBusinessID("testuser");
+       for(var i=0; i<variable.size(); i++){
+    	   System.out.println(variable[i]);
+       } */
     </script>
 
   </head>
@@ -85,19 +88,18 @@
                     <img src="img/account-avatar.png" class="img-fluid float-right" alt="Account">
                   </div>
                   <!-- Display username -->
-                  <h2 class="mb-5">Welcome, <%=session.getAttribute("sessname")  %></h2>
+                  <h2 class="mb-5">Welcome, <%=session.getAttribute("sessname")  %> </h2>
                 </div>
               </div>
-              <%=getBusinessId(session.getAttribute("sessname"))%>
               <!-- Saved Nooks -->
               <div class="row">
 			    <div class="container my-3">
 			      <div class="row no-gutter">
-			        <h2 class="mb-5">Your Saved Nooks </h2>
+			        <h2 class="mb-5">Your Saved Nooks %></h2>
 			        <!-- Display user favorites -->
 			        <div id="savedNooks">
 			        
-			        <%=session.getAttribute("sessname")  %>
+<%-- 			        <%=session.getAttribute("sessname")  %> --%>
 			        
 			        </div>
 			      </div>

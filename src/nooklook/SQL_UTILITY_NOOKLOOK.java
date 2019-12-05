@@ -56,19 +56,24 @@ public class SQL_UTILITY_NOOKLOOK {
 	
 	//CALL FUNCTION WITH THE USERNAME OF A USER - RETURNS THE DATABASE USER ID OF USER (>=0). OTHERWISE, IF THERE IS NO USER WITH THAT USER ID, RETURNS -1
 	public static int getUID(String username) {
-		try {
-			PreparedStatement ps = connection.prepareStatement("SELECT * FROM Users WHERE Username=?");
-			ps.setString(1, username);
-			ResultSet resultSet = ps.executeQuery();
-			if (resultSet.next()) {
-				int UID = resultSet.getInt("UserID");
-				ps.close();
-				resultSet.close();
-				return UID;
+		Connection connection = null;
+	   	java.sql.Statement st= null;
+	   	ResultSet rs = null;
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				connection = DriverManager.getConnection(CREDENTIALS_STRING);
+				st = connection.createStatement();
+				rs = st.executeQuery("Select Users(Username, PW) VALUES ('" + username + "');"); 
+				/* rs = st.executeQuery("SELECT * from Users where username = 'testuser'"); */
+				while(rs.next()) {
+					int userID = rs.getInt("UserID");
+					return userID;
+				}
+			}catch(Exception e){
+				e.printStackTrace();
 			}
-		} catch (Exception e) { 
-			e.printStackTrace();
-		}
+		
+		
 		return -1;
 	}
 
@@ -89,29 +94,35 @@ public class SQL_UTILITY_NOOKLOOK {
 			e.printStackTrace();
 		}
 		return -1;
+		
+		
 	}
 	
 	
 	//****	FOR NOOKS ****// 
 	
 	//GET THE FAVORITE NOOKS OF A USER - RETURNS AN ARRAYLIST CONTAINING THE STRINGS OF THE BUSINESS IDs OF THE FAVORITE NOOKS OF A USER.
-	public ArrayList<String> getBusinessID(String username) {
-		int userID = getUID(username);
-		ArrayList<String> nooks = new ArrayList<String>();
-		try {
-			PreparedStatement ps = connection.prepareStatement("SELECT * FROM FavoriteNooks WHERE userID=? ORDER BY SaveTime ASC");
-			ps.setInt(1, userID);
-			ResultSet resultSet = ps.executeQuery();
-			
-			while (resultSet.next()) {
-				String BusinessID = resultSet.getString("BusinessID");
-				nooks.add(BusinessID);
+	public String getBusinessID(String username) {
+		String nooks = null ;
+		
+		Connection connection = null;
+	   	java.sql.Statement st= null;
+	   	ResultSet rs = null;
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				connection = DriverManager.getConnection(CREDENTIALS_STRING);
+				st = connection.createStatement();
+				rs = st.executeQuery("Select Users(Username, PW) VALUES ('" + username + "');"); 
+				/* rs = st.executeQuery("SELECT * from Users where username = 'testuser'"); */
+				while(rs.next()) {
+					String businessID = rs.getString("FavoriteNooks");
+					nooks = businessID;
+				}
+			}catch(Exception e){
+				e.printStackTrace();
 			}
-			ps.close();
-			resultSet.close();
-		} catch (Exception e) { 
-			e.printStackTrace();
-		}
+		
+		
 		return nooks;
 	}
 	
