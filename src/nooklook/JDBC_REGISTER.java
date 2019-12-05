@@ -56,7 +56,7 @@ public class JDBC_REGISTER extends HttpServlet {
 		
 		if (SQL_UTILITY_NOOKLOOK.getUID(name) == -1) { //username not currently in database i.e. unique
 			SQL_UTILITY_NOOKLOOK.addUser(name, pw1);
-			next = "/Home.jsp";
+			next = "/Preferences.jsp";
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("sessname", name);

@@ -12,22 +12,59 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
   </head>
   <body>
+	
+	<%
+  if (request.getParameterMap().containsKey("signoff")) {
   
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="Home.jsp">
-      <img src="./img/logo.png" width="30px" height="30px" class="d-inline-block align-top" alt="">
-      <strong>&nbsp;&nbsp;NookLook</strong>
-      </a>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-item nav-link" href="Login.jsp">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-item nav-link" href="Register.jsp">Register</a>
-        </li>
-      </ul>
-    </nav>
+   session.setAttribute("sessname", "");
+  
+  };
+  
+  // System.out.println(URL);
+  
+  %>
+<%
+  if(session.getAttribute("sessname") == "" || session.getAttribute("sessname") == null){
+  
+  %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="Home.jsp">
+  <img src="./img/logo.png" width="30px" height="30px" class="d-inline-block align-top" alt="">
+  <strong>&nbsp;&nbsp;NookLook</strong>
+  </a>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-item nav-link" href="Login.jsp">Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-item nav-link" href="Register.jsp">Register</a>
+    </li>
+  </ul>
+</nav>
+<%
+  }
+  
+  else {
+  
+  %> 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="Home.jsp">
+  <img src="./img/logo.png" width="30px" height="30px" class="d-inline-block align-top" alt="">
+  <strong>&nbsp;&nbsp;NookLook</strong>
+  </a>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-item nav-link" href="Account.jsp">Account</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-item nav-link" href="Home.jsp?signoff=on" id="logOUT">Sign Out</a>
+    </li>
+  </ul>
+</nav>
+<%
+  }
+  
+  %>
     
     <!--  Landing -->
     <!-- added a form tag to help init servlet -->

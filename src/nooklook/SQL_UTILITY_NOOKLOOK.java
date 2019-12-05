@@ -95,7 +95,8 @@ public class SQL_UTILITY_NOOKLOOK {
 	//****	FOR NOOKS ****// 
 	
 	//GET THE FAVORITE NOOKS OF A USER - RETURNS AN ARRAYLIST CONTAINING THE STRINGS OF THE BUSINESS IDs OF THE FAVORITE NOOKS OF A USER.
-	public static ArrayList<String> getBusinessID(int userID) {	
+	public ArrayList<String> getBusinessID(String username) {
+		int userID = getUID(username);
 		ArrayList<String> nooks = new ArrayList<String>();
 		try {
 			PreparedStatement ps = connection.prepareStatement("SELECT * FROM FavoriteNooks WHERE userID=? ORDER BY SaveTime ASC");

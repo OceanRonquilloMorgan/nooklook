@@ -11,45 +11,66 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
-      $('#nookCarousel').carousel({
-        interval: 10000
-      })
-      
-      $('.carousel .carousel-item').each(function(){
-          var minPerSlide = 3;
-          var next = $(this).next();
-          if (!next.length) {
-          next = $(this).siblings(':first');
-          }
-          next.children(':first-child').clone().appendTo($(this));
+       
           
-          for (var i=0;i<minPerSlide;i++) {
-              next=next.next();
-              if (!next.length) {
-              	next = $(this).siblings(':first');
-            	}
-              
-              next.children(':first-child').clone().appendTo($(this));
-            }
-      });    
     </script>
+
   </head>
   <body>
+   
     <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="Home.jsp">
-      <img src="./img/logo.png" width="30px" height="30px" class="d-inline-block align-top" alt="">
-      <strong>&nbsp;&nbsp;NookLook</strong>
-      </a>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-item nav-link" href="Account.jsp">Account</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-item nav-link" href="Home.jsp">Sign Out</a>
-        </li>
-      </ul>
-    </nav>
+    <%
+  if (request.getParameterMap().containsKey("signoff")) {
+  
+   session.setAttribute("sessname", "");
+  
+  };
+  
+  // System.out.println(URL);
+  
+  %>
+<%
+  if(session.getAttribute("sessname") == "" || session.getAttribute("sessname") == null){
+  
+  %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="Home.jsp">
+  <img src="./img/logo.png" width="30px" height="30px" class="d-inline-block align-top" alt="">
+  <strong>&nbsp;&nbsp;NookLook</strong>
+  </a>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-item nav-link" href="Login.jsp">Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-item nav-link" href="Register.jsp">Register</a>
+    </li>
+  </ul>
+</nav>
+<%
+  }
+  
+  else {
+  
+  %> 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="Home.jsp">
+  <img src="./img/logo.png" width="30px" height="30px" class="d-inline-block align-top" alt="">
+  <strong>&nbsp;&nbsp;NookLook</strong>
+  </a>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-item nav-link" href="Account.jsp">Account</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-item nav-link" href="Home.jsp?signoff=on" id="logOUT">Sign Out</a>
+    </li>
+  </ul>
+</nav>
+<%
+  }
+  
+  %>
     
     <!-- Account Main -->
     <div class="container-fluid">
@@ -63,8 +84,24 @@
                   <div class="d-none d-md-flex col-md-4 col-lg-6">
                     <img src="img/account-avatar.png" class="img-fluid float-right" alt="Account">
                   </div>
-                  <h2 class="mb-5">Welcome, _______ </h2>
+                  <!-- Display username -->
+                  <h2 class="mb-5">Welcome, <%=session.getAttribute("sessname")  %></h2>
                 </div>
+              </div>
+              <%=getBusinessId(session.getAttribute("sessname"))%>
+              <!-- Saved Nooks -->
+              <div class="row">
+			    <div class="container my-3">
+			      <div class="row no-gutter">
+			        <h2 class="mb-5">Your Saved Nooks </h2>
+			        <!-- Display user favorites -->
+			        <div id="savedNooks">
+			        
+			        <%=session.getAttribute("sessname")  %>
+			        
+			        </div>
+			      </div>
+			    </div>
               </div>
             </div>
           </div>
@@ -72,66 +109,6 @@
       </div>
     </div>
     
-    <!-- Saved Nooks -->
-    <div class="container my-3">
-      <div class="row no-gutter">
-        <h2 class="mb-5">Your Saved Nooks </h2>
-        <div id="nookCarousel" class="carousel slide w-100" data-ride="carousel">
-          <div class="carousel-inner w-100" role="listbox">
-            <div class="carousel-item active">
-              <div class="col-md-4">
-                <div class="card card-body">
-                  <img class="img-fluid" src="http://placehold.it/280x350?text=1">
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="col-md-4">
-                <div class="card card-body">
-                  <img class="img-fluid" src="http://placehold.it/280x350?text=2">
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="col-md-4">
-                <div class="card card-body">
-                  <img class="img-fluid" src="http://placehold.it/280x350?text=3">
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="col-md-4">
-                <div class="card card-body">
-                  <img class="img-fluid" src="http://placehold.it/280x350?text=4">
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="col-md-4">
-                <div class="card card-body">
-                  <img class="img-fluid" src="http://placehold.it/280x350?text=5">
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="col-md-4">
-                <div class="card card-body">
-                  <img class="img-fluid" src="http://placehold.it/280x350?text=6">
-                </div>
-              </div>
-            </div>
-          </div>
-          <a class="carousel-control-prev w-auto" href="#nookCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next w-auto" href="#nookCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-    </div>
     
     <!-- Preferences Form -->
     <div class="container-fluid">
@@ -183,47 +160,6 @@
                       <button type="submit" class="btn btn-primary text-uppercase font-weight-bold mb-2">Save</button>
                     </div>
                   </form>
-                  
-                  <!--  Alternate Vertical Form -->
-                  <!-- <form>
-                    <div class="form-group">
-                      <label for="studyingTime">Studying Time</label>
-                      <select class="form-control" id="studyingTime">
-                        <option>Morning</option>
-                        <option>Afternoon</option>
-                        <option>Evening</option>
-                        <option>24/7</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="ambiance">Ambiance</label>
-                      <select class="form-control" id="ambiance">
-                        <option>Quiet</option>
-                        <option>Casual</option>
-                        <option>Medium</option>
-                        <option>Luxury</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="location">Location</label>
-                      <select class="form-control" id="location">
-                        <option>By Campus</option>
-                        <option>Downtown</option>
-                        <option>Residential</option>
-                        <option>Outskirts</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="amenities">Amenities</label>
-                      <select class="form-control" id="amenities">
-                        <option>Coffee</option>
-                        <option>Food</option>
-                        <option>Wi-Fi</option>
-                        <option>24/7</option>
-                      </select>
-                    </div>
-                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Save</button>
-                    </form> -->
                 </div>
               </div>
             </div>
@@ -231,6 +167,7 @@
         </div>
       </div>
     </div>
+    
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">

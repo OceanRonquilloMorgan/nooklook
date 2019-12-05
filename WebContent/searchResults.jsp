@@ -14,20 +14,58 @@
   <body onload="Search()" >
   
     <!--- Header --->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="Home.jsp">
-      <img src="./img/logo.png" width="30px" height="30px" class="d-inline-block align-top" alt="">
-      <strong>&nbsp;&nbsp;NookLook</strong>
-      </a>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-item nav-link" href="Login.jsp">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-item nav-link" href="Register.jsp">Register</a>
-        </li>
-      </ul>
-    </nav>
+    <%
+  if (request.getParameterMap().containsKey("signoff")) {
+  
+   session.setAttribute("sessname", "");
+  
+  };
+  
+  // System.out.println(URL);
+  
+  %>
+<%
+  if(session.getAttribute("sessname") == "" || session.getAttribute("sessname") == null){
+  
+  %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="Home.jsp">
+  <img src="./img/logo.png" width="30px" height="30px" class="d-inline-block align-top" alt="">
+  <strong>&nbsp;&nbsp;NookLook</strong>
+  </a>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-item nav-link" href="Login.jsp">Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-item nav-link" href="Register.jsp">Register</a>
+    </li>
+  </ul>
+</nav>
+<%
+  }
+  
+  else {
+  
+  %> 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="Home.jsp">
+  <img src="./img/logo.png" width="30px" height="30px" class="d-inline-block align-top" alt="">
+  <strong>&nbsp;&nbsp;NookLook</strong>
+  </a>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-item nav-link" href="Account.jsp">Account</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-item nav-link" href="Home.jsp?signoff=on" id="logOUT">Sign Out</a>
+    </li>
+  </ul>
+</nav>
+<%
+  }
+  
+  %>
     
     <!--- Search Results --->
     <div class="container">
@@ -83,9 +121,19 @@
       	                        var state = item.location.state;
       	                        var zipcode = item.location.zip_code;
       	                        
+      	                        // user not logged in
+      	                        
+      	                      if(session.getAttribute("sessname") == "" || session.getAttribute("sessname") == null){
+      	                      	$('#results').append('<table><tr><td rowspan="4"><b><a href="DetailedNook.jsp?id=' + id + ' " ' + 'style="font-size:24px;color:#343A40;">' + name + '</a></b><br><a href="DetailedNook.jsp?id=' + id + ' " ' + 'style="margin-top:30px;margin-bottom:0px"></div><img style="height: 250px; width: 250px;" src="' + image + '" style="width:400px;height:300px;margin-top:20px;margin-bottom:0px"></a></td><td>&nbsp</td></tr><tr><td>&nbsp<b> Address: </b>' + address + ' ' + city + ', ' + state + ' ' + zipcode + '</td></tr><tr><td>&nbsp<b>Phone Number: </b>' + phone + '</td></tr><tr><td>&nbsp<b>Rating: </b>' + rating + ' (' + reviewcount + ' reviews)</td><td></tr></table>');
+      	                      }
+      	                      	
+      	                      	// user logged in
+      	                      	else {
+
       	                        // Append our result into our page
-      	                      	// $('#results').append('<table><tr><td rowspan="4"><b><a href="DetailedNook.jsp?id=" + id  style="font-size:24px;color:#343A40;">' + name + '</a></b><br><a href="DetailedNook.jsp?id=" + id  style="margin-top:30px;margin-bottom:0px"></div><img style="height: 250px; width: 250px;" src="' + image + '" style="width:400px;height:300px;margin-top:20px;margin-bottom:0px"></a></td><td>&nbsp</td></tr><tr><td>&nbsp<b> Address: </b>' + address + ' ' + city + ', ' + state + ' ' + zipcode + '</td></tr><tr><td>&nbsp<b>Phone Number: </b>' + phone + '</td></tr><tr><td>&nbsp<b>Rating: </b>' + rating + ' (' + reviewcount + ' reviews)</td></tr></table>');
-      	                      $('#results').append('<table><tr><td rowspan="4"><b><a href="DetailedNook.jsp?id=" + id  style="font-size:24px;color:#343A40;">' + name + '</a></b></td><b><a href="DetailedNook.jsp?id=' + id + ' " ' + 'style="margin-top:50px;margin-bottom:50px;"><img src="' + image + '" style="width:200px;height:150px;"></a></td><td>&nbsp</td></tr><tr><td><b>We found <b>' + name + '</b>' + '<br> Located at: ' + address + ' ' + city + ', ' + state + ' ' + zipcode + '<br>The phone number for this business is: ' + phone + '<br>This business has a rating of ' + rating + ' with ' + reviewcount + ' reviews.</div>');
+      	                      	$('#results').append('<table><tr><td rowspan="4"><b><a href="DetailedNook.jsp?id=' + id + ' " ' + 'style="font-size:24px;color:#343A40;">' + name + '</a></b><br><a href="DetailedNook.jsp?id=' + id + ' " ' + 'style="margin-top:30px;margin-bottom:0px"></div><img style="height: 250px; width: 250px;" src="' + image + '" style="width:400px;height:300px;margin-top:20px;margin-bottom:0px"></a></td><td>&nbsp</td></tr><tr><td>&nbsp<b> Address: </b>' + address + ' ' + city + ', ' + state + ' ' + zipcode + '</td></tr><tr><td>&nbsp<b>Phone Number: </b>' + phone + '</td></tr><tr><td>&nbsp<b>Rating: </b>' + rating + ' (' + reviewcount + ' reviews)</td><td><button onclick="addNook(' + id + ',' + id + ')' class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Favorite</button></td></tr></table>');
+      	                      	}
+      	                        // $('#results').append('<table><tr><td rowspan="2"><b><a href="DetailedNook.jsp?id=' + id + ' " ' + 'style="font-size:24px;color:#343A40;">' + name + '</a></b></td><b><td><a href="DetailedNook.jsp?id=' + id + ' " ' + 'style="margin-top:50px;margin-bottom:50px;"><img src="' + image + '" style="height: 250px; width: 250px; margin-top:20px; margin-bottom:0px"></a></td></tr><tr><td>&nbsp</td></tr><tr><td rowspan="4"><b>We found <b>' + name + '</b>' + '<br> Located at: ' + address + ' ' + city + ', ' + state + ' ' + zipcode + '<br>The phone number for this business is: ' + phone + '<br>This business has a rating of ' + rating + ' with ' + reviewcount + ' reviews.</div>');
       	                    });
       	                    
       	                } else {
