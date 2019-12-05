@@ -84,8 +84,8 @@
       	                        var zipcode = item.location.zip_code;
       	                        
       	                        // Append our result into our page
-      	                      	$('#results').append('<table><tr><td rowspan="4"><b><a href="DetailedNook.jsp?id=" + id  style="font-size:24px;color:#343A40;">' + name + '</a></b><br><a href="DetailedNook.jsp?id=" + id  style="margin-top:30px;margin-bottom:0px"></div><img style="height: 250px; width: 250px;" src="' + image + '" style="width:400px;height:300px;margin-top:20px;margin-bottom:0px"></a></td><td>&nbsp</td></tr><tr><td>&nbsp<b> Address: </b>' + address + ' ' + city + ', ' + state + ' ' + zipcode + '</td></tr><tr><td>&nbsp<b>Phone Number: </b>' + phone + '</td></tr><tr><td>&nbsp<b>Rating: </b>' + rating + ' (' + reviewcount + ' reviews)</td></tr></table>');
-      	                    
+      	                      	// $('#results').append('<table><tr><td rowspan="4"><b><a href="DetailedNook.jsp?id=" + id  style="font-size:24px;color:#343A40;">' + name + '</a></b><br><a href="DetailedNook.jsp?id=" + id  style="margin-top:30px;margin-bottom:0px"></div><img style="height: 250px; width: 250px;" src="' + image + '" style="width:400px;height:300px;margin-top:20px;margin-bottom:0px"></a></td><td>&nbsp</td></tr><tr><td>&nbsp<b> Address: </b>' + address + ' ' + city + ', ' + state + ' ' + zipcode + '</td></tr><tr><td>&nbsp<b>Phone Number: </b>' + phone + '</td></tr><tr><td>&nbsp<b>Rating: </b>' + rating + ' (' + reviewcount + ' reviews)</td></tr></table>');
+      	                      $('#results').append('<p><a href="DetailedNook.jsp?id=' + id + ' " ' + 'style="margin-top:50px;margin-bottom:50px;"><img src="' + image + '" style="width:200px;height:150px;"> </a></p> <br>We found <b>' + name + '</b> (' + alias + ')<br>Business ID: ' + id + '<br> Located at: ' + address + ' ' + city + ', ' + state + ' ' + zipcode + '<br>The phone number for this business is: ' + phone + '<br>This business has a rating of ' + rating + ' with ' + reviewcount + ' reviews.</div>');
       	                    });
       	                    
       	                } else {

@@ -46,20 +46,8 @@
                   <h3 class="mb-5">Register a new account</h3>
                   <form action="JDBC_REGISTER" method="GET">
                     <div class="form-label-group">
-                      <input type="text" id="firstName" class="form-control" placeholder="First Name" required autofocus>
-                      <label for="username">First Name</label>
-                    </div>
-                    <div class="form-label-group">
-                      <input type="text" id="lastName" class="form-control" placeholder="Last Name" required autofocus>
-                      <label for="username">Last Name</label>
-                    </div>
-                    <div class="form-label-group">
                       <input type="text" name="username" id="username" class="form-control" placeholder="Username" required autofocus>
                       <label for="username">Username</label>
-                    </div>
-                    <div class="form-label-group">
-                      <input type="email" id="email" class="form-control" placeholder="Email" required autofocus>
-                      <label for="email">Email</label>
                     </div>
                     <div class="form-label-group">
                       <input type="password" name="password1" id="inputPassword" class="form-control" placeholder="Password" required>

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class SQL_UTILITY_NOOKLOOK {
 	
 	
-	public static final String CREDENTIALS_STRING = "jdbc:mysql://google/lab7?cloudSqlInstance=lab-7-201:us-central1:lab8instance&socketFactory=com.google.cloud.sql.mysql.SocketFactory&useSSL=false&user=ptkaster&password=gitlitcommit";      
+	public static final String CREDENTIALS_STRING = "jdbc:mysql://google/MEMBERS?cloudSqlInstance=lab-7-201:us-central1:lab8instance&socketFactory=com.google.cloud.sql.mysql.SocketFactory&useSSL=false&user=ptkaster&password=gitlitcommit";      
 	static Connection connection;
 	
 	public static void initConnection () {
@@ -26,17 +26,33 @@ public class SQL_UTILITY_NOOKLOOK {
 	}
 	
 	//ADD A USER TO THE DATABASE BY CALLING FUNCTION WITH THE USERNAME AND PASSWORD THAT THE USER WANTS TO REGISTER WITH
-	public static void addUser(String username, String password) {
-		try {
-			PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO Users(Username, PW) VALUES (?, ?)");
-			preparedStatement.setString(1, username);
-			preparedStatement.setString(2, password);
-			preparedStatement.execute();
-			preparedStatement.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//	public static void addUser(String username, String password) {
+//		try {
+//			PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO Users(Username, PW) VALUES (?, ?)");
+//			preparedStatement.setString(1, username);
+//			preparedStatement.setString(2, password);
+//			preparedStatement.execute();
+//			preparedStatement.close();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+
+	public static void addUser(String username, String password)
+	{    
+	 Connection connection = null;
+	   	java.sql.Statement st= null;
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				connection = DriverManager.getConnection(CREDENTIALS_STRING);
+				st = connection.createStatement();
+				st.executeUpdate("INSERT INTO Users(Username, PW) VALUES ('" + username + "', '" + password + "');"); 
+				/* rs = st.executeQuery("SELECT * from Users where username = 'testuser'"); */
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 	}
+
 	
 	//CALL FUNCTION WITH THE USERNAME OF A USER - RETURNS THE DATABASE USER ID OF USER (>=0). OTHERWISE, IF THERE IS NO USER WITH THAT USER ID, RETURNS -1
 	public static int getUID(String username) {

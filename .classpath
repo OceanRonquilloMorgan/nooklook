@@ -10,5 +10,8 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="gson-2.8.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="src/jackson-core-2.2.3.jar"/>
+	<classpathentry kind="lib" path="src/mysql-connector-java-5.1.46 (1).jar"/>
+	<classpathentry kind="lib" path="src/mysql-socket-factory-1.0.15-jar-with-dependencies (1).jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
