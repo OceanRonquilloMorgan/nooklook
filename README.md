@@ -11,7 +11,7 @@ NookLook is a web application that helps users find study spots near them that a
 * Juvensen Jules
 
 ## Installation
-1 Open Eclipse.
+1. Open Eclipse.
 2. Import project “nooklook” into your workspace.
 3. Open the project settings in Eclipse and make sure external JARs are included in the project (ex. mysql-connector-java-5.1.46.jar).
 4. Open Nooklook_Database.sql and run that in MySQL Workbench. This will create a database called NookLook and ensure you have a database set-up properly and working.
